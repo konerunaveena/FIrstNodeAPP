@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/konerunaveena/FIrstNodeAPP/issues"
   },
-  "homepage": "https://github.com/konerunaveena/FIrstNodeAPP#readme"
+  "homepage": "https://github.com/konerunaveena/FIrstNodeAPP#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "nodeman": "^1.1.2"
+  }
 }
