@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "server": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,7 @@
     "url": "https://github.com/konerunaveena/FIrstNodeAPP/issues"
   },
   "homepage": "https://github.com/konerunaveena/FIrstNodeAPP#readme",
-  "dependencies": {},
   "devDependencies": {
-    "nodeman": "^1.1.2"
+    "nodemon": "^2.0.7"
   }
 }
