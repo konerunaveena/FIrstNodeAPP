@@ -1,15 +1,26 @@
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
-var cors = require('cors')
+const cors = require('cors')
+const expreddHbs = require('express-handlebars') 
 const adminData = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 const fs = require('fs');
 
 const app = express();
 app.use(cors());
-app.set('view engine', 'pug');
-app.set('views', 'views/pug');
+
+app.engine(
+  'hbs', 
+  expreddHbs({
+    layoutsDir : 'views/layout/', 
+    defaultLayout : 'main-layout', 
+    extname:"hbs"
+  })
+);
+
+app.set('view engine', 'hbs');
+app.set('views', 'views/handlebars');
 
 //app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.urlencoded({ extended: false })) // if we are using express version above 4.16 use this else use above one 
@@ -20,7 +31,7 @@ app.use("/admin",adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.render('404',{pageTitle : 'Page Not Found'});
+  res.status(404).render('404',{pageTitle : 'Page Not Found'});
 })
 
 app.listen(3002);
