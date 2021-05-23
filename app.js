@@ -2,7 +2,7 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 var cors = require('cors')
-const adminRoutes = require('./routes/admin')
+const adminData = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
 const fs = require('fs');
 
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false })) // if we are using express vers
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use("/admin",adminRoutes);
+app.use("/admin",adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
