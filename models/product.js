@@ -1,15 +1,35 @@
-const products = [];
+const fs = require('fs');
+const path = require('path');
+
+const p = "./data/products.json";
+
+const getProductsFromFile = cb => {
+  fs.readFile(p, (err, fileContent) => {
+      if (err) cb([]);
+      if(fileContent.length > 0 ){
+        cb(JSON.parse(fileContent));
+      }
+      else {
+        cb([]);
+      }     
+  });
+};
 
 module.exports = class Product {
-  constructor(title) {
-    this.title = title
-  }
-  
-  save() {
-    products.push(this)
+  constructor(t) {
+    this.title = t;
   }
 
-  static fetchAll() {
-    return products;
+  save() {
+    getProductsFromFile(products => {
+      products.push(this);
+      fs.writeFile(p, JSON.stringify(products), err => {
+        console.log(err);
+      });
+    });
   }
-}
+
+  static fetchAll(cb) {
+    getProductsFromFile(cb);
+  }
+};
