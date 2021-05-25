@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 
 app.set('view engine', 'ejs');
-app.set('views', 'views/ejs');
+app.set('views', 'views/');
 
 //app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.urlencoded({ extended: false })) // if we are using express version above 4.16 use this else use above one 
